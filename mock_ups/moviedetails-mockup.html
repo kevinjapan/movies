@@ -1,0 +1,416 @@
+<!--
+#rradar interview test - working notes
+
+1. Mockup is for distribution to client for review - so we need a minimal standalone file(s) solution
+   - the mockup should not be dependent on a React framework.   
+
+2. Tools like StoryBook would provide a neater solution for sharing mockups - but given time constraints..
+
+3. first thoughts, use the target CSS system semantic-ui for consistency 
+   this is a new css framework for me, and trying to adapt to using this in a short time proved a rabbit-hole..
+   it's specifically designed for React and any adaptation for use in a local environment for a mockup would 
+   likely be messy and take time - so custom css it is.
+
+4. we don't re-invent the wheel - reviewed IMDB for layout/styling/formatting conventions
+
+5. Links are not active but should be styled appropriately
+
+
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>Avatar Movie Details - Mockup</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+   --dark-bg:#1B1C1D;
+   --mid-bg:#3F3D4B;
+   --light-bg:#757383;
+   --paragaph-width:36rem;
+}
+
+*,*::before,*::after {
+   -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+/* flex utilities : separate to simplify safari distinctions */
+.flex {
+   display:-webkit-box;
+   -webkit-box-flex: 0;
+   display:flex;
+   flex: 0 0 auto;
+}
+.flex_column {
+   display:-webkit-box;
+   -webkit-box-flex: 0;
+   -webkit-box-orient:vertical;
+   -webkit-box-direction:normal;
+   display:flex;
+   flex: 0 0 auto;
+   flex-direction:column;
+}
+.flex_start {
+   justify-content: flex-start;
+}
+
+
+/* primary elements */
+body {
+   /*overflow-x:hidden;*/
+   margin:0;
+   padding:0;
+   font-family: 'Assistant', sans-serif;
+   font-size:15px;
+}
+.body_content {
+   max-width:100%;
+}
+.content_block {
+   width:100%;
+   padding-inline:1rem;
+}
+.content_block--dark {
+   background-color:#1B1C1D;
+   color:white;
+}
+
+
+/* html elements */
+p {
+   max-width:var(--paragaph-width);
+   margin-block:1rem;
+}
+
+/* links have no href in this mockup - so we have to style */
+a {
+   color:#6288C2;
+   padding-inline:.25rem;
+   cursor:pointer;
+}
+a:hover {
+   text-decoration:underline;
+}
+
+input {
+   margin:.75rem;
+   width:100%;
+}
+
+/* row containers */
+.row {
+   width:100%;
+}
+.label {
+   font-weight:bold;
+}
+
+/* column containers */
+.two_cols {
+   display:grid;
+   grid-template-columns:1fr 1fr;
+}
+.three_cols {
+   display:grid;
+   grid-template-columns:repeat(3,1fr);
+}
+.five_cols {
+   display:grid;
+   grid-template-columns:repeat(5,1fr);
+}
+/* column cells */
+.col_cell {
+   padding:.25rem;
+}
+.col_cell.flex {
+   border-bottom:solid 1px var(--light-bg);
+}
+
+/* imgs */
+img {
+   max-width:100%;
+}
+.movie_cover_img {
+   max-width:100%;
+}
+
+
+/* tags (genres/keywords) */
+.tag_btn {
+   color:white;
+   background-color:transparent;
+
+   margin:.25rem;
+   border:solid 1px white;
+   border-radius:.75rem;
+   cursor:pointer;
+}
+.tag_btn a {
+   color:white;
+}
+.tag_btn:hover {
+   color:black;
+   background-color:white;
+}
+.tag_btn:hover a {
+   color:#6288C2;
+}
+.tag_btn--dark_text {
+   color:var(--mid-bg);
+   border:solid 1px var(--mid-bg);
+}
+.tag_btn--dark_text a {
+   color:#6288C2;
+}
+.tag_btn--dark_text:hover {
+   color:white;
+   background-color:black;
+}
+.tag_btn--dark_text:hover a {
+   color:white;
+}
+
+.sign_in {
+   float:right;
+   margin:.75rem;
+   cursor:pointer;
+}
+/* padding */
+.pad_inline_2 {
+   padding-bottom:2rem;padding-top:2rem;
+}
+.pad_inline_5 {
+   padding-bottom:5rem;
+}
+
+/*
+      md & lg screens 
+*/
+@media (min-width:55em) {
+   .body_content {
+      grid-template-columns:1fr 1fr;
+   }
+   .content_block {
+      width:60%;
+      margin-inline:auto;
+   }
+   .content_block.full {
+      width:100%;
+      padding-inline:6rem;
+   }
+   .movie_cover_img {
+      max-width:60%;
+   }
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+   <div class="body_content">
+
+
+      <div class="content_block full content_block--dark three_cols">
+
+         <div class="col_cell">
+            <h3 class="ui header " style="color:white;">iMOVIES</h3>
+         </div>
+         <div class="col_cell">
+            <input type="search" placeholder="search iMovie"/>
+         </div>
+         <div class="col_cell">
+            <div class="sign_in">sign in</div>
+         </div>
+
+      </div>
+         
+
+
+      <div class="content_block full content_block--dark five_cols ">
+ 
+         <div style="grid-column: 1/4;">
+            <h1 class="ui header col_cell" style="margin-block:0;">Avatar</h1>
+            <div class="col_cell flex flex_start">
+               <div class="col_cell">2009</div>
+               <div class="col_cell">.</div>
+               <div class="col_cell">2h 42m</div>
+            </div>
+         </div>
+
+
+         <div class="">
+            <div class="col_cell flex_column flex_start">
+               <div class="col_cell">Popularity</div>
+               <div class="col_cell">150</div> 
+            </div>
+         </div> 
+         
+         <div class="">
+            <div class="col_cell flex_column flex_start">
+               <div class="col_cell">Site Rating</div>
+               <div class="col_cell"><span>7.2</span><span>/10</span></div> 
+            </div>
+         </div>
+
+      </div>
+         
+
+
+      <div class="content_block full content_block--dark">
+         <img src="unsplash-forest-img.jpg" class="movie_cover_img" alt="forest image" />
+            <!-- 
+               Photo by <a href="https://unsplash.com/@skamenar">Steven Kamenar</a> on <a href="https://unsplash.com/s/photos/forest?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            -->
+      </div>
+            
+   
+   
+      <div class="content_block full content_block--dark">
+         <!-- genres -->
+         <Button class="tag_btn"><a>Action</a></Button>
+         <Button class="tag_btn"><a>Adventure</a></Button>
+         <Button class="tag_btn"><a>Fantasy</a></Button>
+         <Button class="tag_btn"><a>Science Fiction</a></Button>
+
+      </div>
+
+   
+      <div class="content_block full content_block--dark pad_inline_2">
+         <!-- overview -->
+         <p>In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between 
+         following orders and protecting an alien civilization.</p>                                 
+      </div>
+        
+
+      <div class="content_block pad_inline_2">
+         <div class="col_cell flex flex_start">
+            <div class="col_cell"><h2 class="ui header">Storyline</h2></div>
+            <div class="col_cell"></div> 
+         </div>
+         <div class="col_cell flex flex_start">
+               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis metus sed enim ullamcorper tincidunt. 
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nibh ut elit condimentum tempor sit amet sed risus. 
+               Vestibulum in dictum nulla. In sed metus justo. Pellentesque non euismod felis. Integer diam nulla, gravida eget elit in, 
+               ullamcorper mattis dui. Curabitur non eros ut libero eleifend auctor vitae non enim.</p>
+            <div class="col_cell"></div> 
+         </div>
+         <div class="col_cell flex flex_start">
+            <div class="col_cell">
+               <Button class="tag_btn tag_btn--dark_text"><a>Action</a></Button>
+               <Button class="tag_btn tag_btn--dark_text"><a>culture clash</a></Button>
+               <Button class="tag_btn tag_btn--dark_text"><a>future</a></Button> 
+               <Button class="tag_btn tag_btn--dark_text"><a>space war</a></Button> 
+               <Button class="tag_btn tag_btn--dark_text"><a>space colony</a></Button> 
+               <Button class="tag_btn tag_btn--dark_text"><a>35 more</a></Button> </div>
+            <div class="col_cell"></div> 
+         </div>
+         <div class="col_cell flex flex_start">
+            <div class="col_cell label">Taglines</div>
+            <div class="col_cell">Enter the World of Pandora.</div> 
+         </div>
+         <div class="col_cell flex flex_start">
+            <div class="col_cell label">Genres</div>
+            <div class="col_cell">
+               <a >Action</a>
+               <a >Adventure</a>
+               <a >Fantasy</a>
+               <a >Science Fiction</a>
+            </div> 
+         </div>
+      </div>
+
+
+      <div class="content_block pad_inline_2">
+         <div class="col_cell flex flex_start">
+            <div class="col_cell"><h2 class="ui header">Details</h2></div>
+            <div class="col_cell"></div> 
+         </div>
+         <div class="col_cell flex flex_start">
+            <div class="col_cell label">Release Date</div>
+            <div class="col_cell">December 10th 2009</div> 
+         </div>
+         <div class="col_cell flex flex_start">
+            <div class="col_cell label">Official Sites</div>
+            <div class="col_cell"><a >http://www.avatarmovie.com/</a></div>
+         </div>
+         <div class="col_cell flex flex_start">
+            <div class="col_cell label">Languages</div>
+            <div class="col_cell">
+               <a >English</a>
+               <a >Spanish</a>
+            </div> 
+         </div>
+         <div class="col_cell flex flex_start">
+            <div class="col_cell label">Original Title</div>
+            <div class="col_cell">Avatar</div> 
+         </div>
+         <div class="col_cell flex flex_start">
+            <div class="col_cell label">Filming Locations</div>
+            <div class="col_cell">
+               <a>United States of America</a>
+               <a>United Kingdom</a></div> 
+         </div>
+         <div class="col_cell flex flex_start">
+            <div class="col_cell label">Production Companies</div>
+            <div class="col_cell">
+               <a >Ingenious Film Partners</a> 
+               <a >Twentieth Century Fox Film Corporation</a></br>
+               <a >Dune Entertainmen</a>
+               <a >Lightstorm Entertainment</a> 
+            </div> 
+         </div>
+      </div>
+
+
+      
+      <div class="content_block pad_inline_2">
+         <div class="col_cell flex flex_start">
+            <div class="col_cell"><h2 class="ui header">Box office</h2></div>
+            <div class="col_cell"></div> 
+         </div>
+         <div class="col_cell flex flex_start">
+            <div class="col_cell label">Budget</div>
+            <div class="col_cell">$237,000,000</div> 
+         </div>
+      </div>
+
+
+      <div class="content_block pad_inline_2">
+         <div class="col_cell flex flex_start">
+            <div class="col_cell"><h2 class="ui header">Technical specs</h2></div>
+            <div class="col_cell"></div> 
+         </div>
+         <div class="col_cell flex flex_start">
+            <div class="col_cell label">Runtime</div>
+            <div class="col_cell">2 hours 42 minutes</div> 
+         </div>
+      </div>
+      
+
+
+      
+
+   </div>  
+
+</body>
+</html>
+      
+
